@@ -1,3 +1,6 @@
+import time
+def get_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
 # 创建人类
 class Person(object):
     # 初始化姓名,没枪,生命值100
@@ -31,7 +34,7 @@ class Person(object):
         else:
             if self.hp>0:
                 return "%s没有枪,生命值是:%d"%(self.name,self.hp)
-            else:return "%s已经挂掉了"%self.name
+            else:return "%s已经挂掉了\n%s 孙凤春作业"%(self.name,get_time())
 
 # 创建枪类
 class Gun(object):
@@ -49,16 +52,12 @@ class Gun(object):
     def __str__(self):
         return "%s里有%s"%(self.type,self.danjia)
 
-# 创建弹夹累
 class DanJia(object):
-    # 初始化弹夹容量和子弹容器
     def __init__(self,max_num):
         self.max_num=max_num
         self.bullet_list=[]
-    # 安装子弹
     def save_bullet(self,bullet):
         self.bullet_list.append(bullet)
-    # 弹出子弹
     def out_bullet(self):
         if self.bullet_list:
             return self.bullet_list.pop()
@@ -67,9 +66,6 @@ class DanJia(object):
     def __str__(self):
         return "弹夹信息:%d/%d"%(len(self.bullet_list),self.max_num)
 
-
-
-# 创建子弹累
 class Bullet(object):
     #初始化子弹伤害
     def __init__(self,killability):
@@ -80,28 +76,19 @@ class Bullet(object):
 
 
 def main():
-
-    # 创建一个对象老王
     laowang=Person("老王")
-    # 创建一个枪的对象AK47
     AK47=Gun("AK47")
-    # 创建一个容量30的弹夹
     danjia=DanJia(30)
-    # 创建杀伤力为20的子弹
     bullet=Bullet(20)
-    # 创建敌人:老宋
-    laosong = Person("敌人老宋")
-    # 老王安装子弹(将bullet放入danjia)
+    laosong = Person("敌人")
     laowang.input_bullet(danjia,bullet,5)
-    # 老王为AK47安装弹夹
     laowang.input_danjia(AK47,danjia)
-    # 老王拿起ak47
     laowang.take_gun(AK47)
     print(AK47)
     print(danjia)
     print(laowang)
     print(laosong)
-    # 老王开枪
+
     laowang.shot(laosong)
     print(laosong)
     laowang.shot(laosong)
