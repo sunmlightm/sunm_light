@@ -1,10 +1,11 @@
+# 下一步：优化基类
 # 导入ｐｙｇａｍｅ和ｔｉｍｅ模块
 import pygame
 import time
 import random
 from pygame.locals import *
 
-# 我方飞机
+# 飞机
 class HeroPlan(object):
     # 设置飞机初始化信息
     def __init__(self,screen):
