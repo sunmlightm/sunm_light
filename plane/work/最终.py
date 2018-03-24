@@ -28,6 +28,7 @@ class Plan(object):
         for bullet in empty_list:
             empty_list.remove(bullet)
 
+
 class Bullet(object):
     def __init__(self,screen,x,y,image_path):
         self.screen=screen
@@ -63,11 +64,10 @@ class HeroPlan(Plan):
             if self.image_num == (self.image_length + 1):
                 self.image_num = 0
                 self.image_index += 1
-
                 if self.image_index > (self.image_length - 1):
                     self.image_index = 5
-                    time.sleep(1)
-                    main() # 炸完了咋样？可以
+                    time.sleep(2)
+                    main()  # 炸完了咋样？可以
         else:
             Plan.display(self)
 
@@ -86,7 +86,6 @@ class EnemyPlane(Plan):
         super().__init__(screen, x, y, image_path)
         self.bullet_list = []
         self.flg = "right"
-
         self.__get_bomb_image()
 
     # 加载爆炸图片
@@ -110,15 +109,15 @@ class EnemyPlane(Plan):
             if self.image_num == (self.image_length + 1):
                 self.image_num = 0
                 self.image_index += 1
-
                 if self.image_index > (self.image_length - 1):
-                    self.image_index = 5
-                    time.sleep(1)
                     global time_play
-                    time_play+=1
-                    if time_play<=3:
-                        main() # 炸完了咋样？可以
-                    else:exit()
+                    time_play += 1
+                    self.image_index = 5
+                    time.sleep(2)
+                    if time_play <= 3:
+                        main()  # 炸完了咋样？可以
+                    else:
+                        exit()
 
         else:
             Plan.display(self)
@@ -137,7 +136,7 @@ class EnemyPlane(Plan):
     def send_bullet(self,enemy):
         self.enemy=enemy
         # 生成子弹并放进列表
-        num=random.randint(1,200)
+        num=random.randint(1,2000)
         if num==20 or num==150:
             self.bullet_list.append(EnemyBullet(self.screen,self.x,self.y,"image/Goods01.png"))
         if num==30 or num==180:
@@ -272,8 +271,7 @@ def main():
         # 将飞机添加到窗口中
         plane.display()
         enemy_plan.display()
-        if boom_flog==0:
-            enemy_plan.move()
+        enemy_plan.move()
         enemy_plan.send_bullet(plane)
         # 更新显示内容
         pygame.display.update()
