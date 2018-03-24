@@ -12,6 +12,11 @@ class Plan(object):
         self.y=y
         self.image=pygame.image.load(image_path)
         self.bullet_list = []
+        self.bomb_image_list = []
+
+        self.image_num = 0
+        self.image_index = 0
+        self.isbomb = False
     def display(self):
         empty_list=[]
         self.screen.blit(self.image,(self.x,self.y))
@@ -51,6 +56,7 @@ class HeroPlan(Plan):
             if bullet.judge_jizhong(self.enemy):
                 self.enemy.isbomb=True
 
+
         # empty_list=[]
         # # screen.blit(plane, (x, y))
         # self.screen.blit(self.image,(self.x,self.y))
@@ -75,18 +81,15 @@ class EnemyPlane(Plan):
         y = 0
         image_path = "image/EnemyBoss2.png"
         super().__init__(screen, x, y, image_path)
-        self.bomb_image_list=[]
-        self.__get_bomb_image()
-        self.image_num=0
-        self.image_index=0
-        self.isbomb=False
+        self.bullet_list = []
+        self.flg = "right"
 
+        self.__get_bomb_image()
         # self.screen=screen
         # self.x=0
         # self.y=0
         # self.image=pygame.image.load("image/EnemyBoss2.png")
-        self.bullet_list = []
-        self.flg="right"
+
     # 加载爆炸图片
     def __get_bomb_image(self):
         for i in range(1,7):
@@ -106,7 +109,7 @@ class EnemyPlane(Plan):
 
                 if self.image_index > (self.image_length - 1):
                     self.image_index = 5
-                    time.sleep(2)
+                    time.sleep(1)
                     global time_play
                     time_play+=1
                     if time_play<=3:
@@ -162,8 +165,8 @@ class HeroBullet(Bullet):
         # self.y=y-20
 
     def judge_jizhong(self, enemy):
-        if self.x > enemy.x and self.x < enemy.x + 56:
-            if self.y > enemy.y and self.y < enemy.y + 31:
+        if self.x > enemy.x and self.x < enemy.x + 113:
+            if self.y > enemy.y and self.y < enemy.y + 80:
                 print("击中敌机了..")
                 global boom_flog
                 boom_flog=1
