@@ -66,7 +66,7 @@ class HeroPlan(Plan):
                 self.image_index += 1
                 if self.image_index > (self.image_length - 1):
                     self.image_index = 5
-                    time.sleep(2)
+                    time.sleep(1)
                     main()  # 炸完了咋样？可以
         else:
             Plan.display(self)
@@ -87,6 +87,7 @@ class EnemyPlane(Plan):
         self.bullet_list = []
         self.flg = "right"
         self.__get_bomb_image()
+        self.boom=0
 
     # 加载爆炸图片
     def __get_bomb_image(self):
@@ -103,8 +104,9 @@ class EnemyPlane(Plan):
             if bullet.judge_jizhong(self.enemy):
                 self.enemy.isbomb=True
         if self.isbomb:
+            self.boom=1
             bomb_image = self.bomb_image_list[self.image_index]
-            self.screen.blit(bomb_image, (self.x, self.y))
+            self.screen.blit(bomb_image, (self.x+50, self.y))
             self.image_num += 1
             if self.image_num == (self.image_length + 1):
                 self.image_num = 0
@@ -113,13 +115,14 @@ class EnemyPlane(Plan):
                     global time_play
                     time_play += 1
                     self.image_index = 5
-                    time.sleep(2)
+                    time.sleep(1)
                     if time_play <= 3:
                         main()  # 炸完了咋样？可以
                     else:
                         exit()
 
         else:
+            self.boom=0
             Plan.display(self)
         empty_list=[]
         # 显示子弹
@@ -136,7 +139,7 @@ class EnemyPlane(Plan):
     def send_bullet(self,enemy):
         self.enemy=enemy
         # 生成子弹并放进列表
-        num=random.randint(1,2000)
+        num=random.randint(1,200)
         if num==20 or num==150:
             self.bullet_list.append(EnemyBullet(self.screen,self.x,self.y,"image/Goods01.png"))
         if num==30 or num==180:
@@ -145,6 +148,8 @@ class EnemyPlane(Plan):
             self.bullet_list.append(EnemyBullet(self.screen,self.x+50,self.y,"image/HeroBullet2.png"))
 
     def move(self):
+        if self.boom==1:
+            return
         if self.flg=="right":
             self.x=self.x+1
         elif self.flg=="left":
