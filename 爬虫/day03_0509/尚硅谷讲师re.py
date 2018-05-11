@@ -4,7 +4,7 @@
 import requests,os,re
 
 def get_html():
-    response=requests.get('http://www.atguigu.com/teacher.sh`tml')
+    response=requests.get('http://www.atguigu.com/teacher.shtml')
     data=response.content.decode()
     return data
 
