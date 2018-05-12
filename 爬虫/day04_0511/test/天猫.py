@@ -23,10 +23,6 @@ def get_html():
     response=requests.get(url,headers=headers)
     return response.text
 
-# productImg-wrap
-# <a href="//detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.3c4d2beam2tKmZ&amp;id=522608622465&amp;skuId=3750867506696&amp;areaId=131000&amp;user_id=1813097055&amp;cat_id=2&amp;is_b=1&amp;rn=ebba968a480db86f84c1b1fd595f5084" class="productImg" target="_blank" data-p="1-10" atpanel="1-10,522608622465,50008881,,spu,1,spu,1813097055,,," data-spm-anchor-id="a220m.1000858.1000725.1">
-# <img src="//img.alicdn.com/bao/uploaded/i1/1813097055/TB2a0W9puOSBuNjy0FdXXbDnVXa_!!1813097055.jpg_b.jpg" data-spm-anchor-id="a220m.1000858.1000725.i0.3c4d2beam2tKmZ">
-# </a>
 def get_id(soup):
     url_all=soup.find_all(href=re.compile(r'//detail.tmall.com/item.htm?'))
     url_list=[]
