@@ -48,8 +48,8 @@
       <file leaf-file-name="天猫.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/爬虫/day04_0511/test/天猫.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="19" column="41" lean-forward="true" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+            <state relative-caret-position="300">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="e#54#72#0" expanded="true" />
               </folding>
@@ -113,8 +113,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="757" />
-    <option name="y" value="82" />
+    <option name="x" value="246" />
+    <option name="y" value="92" />
     <option name="width" value="1206" />
     <option name="height" value="909" />
   </component>
@@ -424,7 +424,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="731" y="134" width="1206" height="909" extended-state="0" />
+    <frame x="246" y="92" width="1206" height="909" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -759,8 +759,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/爬虫/day04_0511/test/天猫.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="19" column="41" lean-forward="true" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+        <state relative-caret-position="300">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="e#54#72#0" expanded="true" />
           </folding>

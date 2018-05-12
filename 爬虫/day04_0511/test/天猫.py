@@ -23,6 +23,7 @@ def get_html():
     response=requests.get(url,headers=headers)
     return response.text
 
+
 def get_id(soup):
     url_all=soup.find_all(href=re.compile(r'//detail.tmall.com/item.htm?'))
     url_list=[]
