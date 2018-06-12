@@ -7,14 +7,15 @@
 import json
 
 class DongguanPipeline(object):
-    def open_spider(self,spider):
-        self.file=open('dongguan.json','w',encoding='utf-8')
+    def open_spider(self, spider):
+        self.file = open("dongguan.json", "w", encoding="utf-8")
+
 
     def process_item(self, item, spider):
-        py_dict = dict(item)
-        text = json.dumps(py_dict,ensure_ascii=False) + '\n'
+        text = json.dumps(dict(item),ensure_ascii=False) + '\n'
         self.file.write(text)
         return item
+
 
     def close_spider(self,spider):
         self.file.close()
